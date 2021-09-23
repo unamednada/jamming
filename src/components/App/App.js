@@ -11,12 +11,18 @@ class App extends React.Component {
       searchResults: [
         { id: 1, name: 'hey', artist: 'ann', album: 'ho' },
         { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo' },
+        { id: 3, name: 'bloob', artist: 'meerk', album: 'borp' },
       ],
+      playlistName: 'My Playlist',
+      playlistTracks: [
+        { id: 1, name: 'hey', artist: 'ann', album: 'ho' },
+        { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo' },
+      ]
     };
   }
 
   render() {
-    const { searchResults } = this.state;
+    const { searchResults, playlistName, playlistTracks } = this.state;
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -24,7 +30,10 @@ class App extends React.Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={ searchResults } />
-            <PlayList />
+            <PlayList
+              playlistName={ playlistName }
+              playlistTracks= { playlistTracks }
+            />
           </div>
         </div>
       </div>  
