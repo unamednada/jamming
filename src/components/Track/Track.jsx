@@ -3,12 +3,12 @@ import './Track.css';
 
 class Track extends React.Component {
   render() {
-    const { isRemoval } = this.props;
+    const { isRemoval, track: { name, artist, album } } = this.props;
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>track name will go here</h3>
-          <p>track artist will go here | track album will go here</p>
+          <h3>{ name }</h3>
+          <p>{ `${ artist } | ${ album }` }</p>
         </div>
         <button className="Track-action">{ isRemoval ? '-' : '+' }</button>
       </div>

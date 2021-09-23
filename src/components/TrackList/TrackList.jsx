@@ -4,9 +4,10 @@ import Track from '../Track/Track';
 
 class TrackList extends React.Component {
   render() {
+    const { tracks } = this.props;
     return (
       <div className="TrackList">
-        <Track isRemoval={ false } />
+        { tracks.map((track) => <Track track={ track } key={ track.id } />) }
       </div>
     );
   }
