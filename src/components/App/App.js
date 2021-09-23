@@ -19,6 +19,18 @@ class App extends React.Component {
         { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo' },
       ]
     };
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  addTrack(track) {
+    const { id: currTrack } = track;
+    const { playlistTracks } = this.state;
+    if (playlistTracks.every(({ id }) => id !== currTrack)) {
+      playlistTracks.push(track);
+      this.setState({
+        playlistTracks,
+      });
+    }
   }
 
   render() {
@@ -29,7 +41,10 @@ class App extends React.Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={ searchResults } />
+            <SearchResults
+              searchResults={ searchResults }
+              onAdd={ this.addTrack }
+            />
             <PlayList
               playlistName={ playlistName }
               playlistTracks= { playlistTracks }
