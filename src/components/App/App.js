@@ -9,19 +9,18 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchResults: [
-        { id: 1, name: 'hey', artist: 'ann', album: 'ho' },
-        { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo' },
-        { id: 3, name: 'bloob', artist: 'meerk', album: 'borp' },
+        { id: 1, name: 'hey', artist: 'ann', album: 'ho', uri: 1 },
+        { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo', uri: 2 },
+        { id: 3, name: 'bloob', artist: 'meerk', album: 'borp', uri: 3 },
       ],
       playlistName: 'My Playlist',
-      playlistTracks: [
-        { id: 1, name: 'hey', artist: 'ann', album: 'ho' },
-        { id: 2, name: 'yay', artist: 'mary', album: 'yoohoo' },
-      ]
+      playlistTracks: [],
+      trackURIs: [],
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlayList = this.savePlayList.bind(this);
   }
 
   addTrack(track) {
@@ -48,6 +47,13 @@ class App extends React.Component {
     });
   }
 
+  savePlayList() {
+    const { playlistTracks } = this.state;
+    this.setState({
+      trackURIs: playlistTracks.map(({uri}) => uri),
+    });
+  }
+
   render() {
     const { searchResults, playlistName, playlistTracks } = this.state;
     return (
@@ -65,6 +71,7 @@ class App extends React.Component {
               playlistTracks= { playlistTracks }
               onRemove={ this.removeTrack }
               onNameChange={ this.updatePlaylistName }
+              onSave={ this.savePlayList }
             />
           </div>
         </div>

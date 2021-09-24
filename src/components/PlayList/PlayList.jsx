@@ -15,7 +15,7 @@ class PlayList extends React.Component {
   }
 
   render() {
-    const { playlistTracks, onRemove, playlistName } = this.props;
+    const { playlistTracks, onRemove, playlistName, onSave } = this.props;
     return (
       <div className="Playlist">
         <input
@@ -27,7 +27,10 @@ class PlayList extends React.Component {
           onRemove={ onRemove }
           isRemoval={ true }
         />
-        <button className="Playlist-save">SAVE TO SPOTIFY</button>
+        <button
+          className="Playlist-save"
+          onClick={ onSave }
+        >SAVE TO SPOTIFY</button>
       </div>
     );
   }
