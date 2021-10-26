@@ -3,7 +3,7 @@ const clientID = '4d6e372a4368407abc4362c693bc9957';
 const redirectURI = 'http://localhost:3000/';
 
 export const Spotify = {
-  getAccessToken() {
+  getAccessToken: () => {
     if (userAccessToken) {
       return userAccessToken;
     }
@@ -21,5 +21,13 @@ export const Spotify = {
     }
 
     window.location = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+  },
+  search: (term) => {
+    const userAccessToken = Spotify.getAccessToken();
+    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+      headers: {
+        Authorization: `Bearer ${userAccessToken}`
+      }
+    });
   }
 };
