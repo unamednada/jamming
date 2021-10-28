@@ -1,6 +1,6 @@
 let userAccessToken = null;
 const clientID = '4d6e372a4368407abc4362c693bc9957';
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'http://material-flame.surge.sh';
 
 export const Spotify = {
   getAccessToken: () => {
