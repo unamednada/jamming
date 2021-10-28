@@ -21,6 +21,7 @@ class PlayList extends React.Component {
         <input
           defaultValue={ playlistName }
           onChange={ this.handleNameChange }
+          value={ playlistName }
         />
         <TrackList
           tracks={ playlistTracks }
